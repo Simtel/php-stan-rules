@@ -1,0 +1,13 @@
+{
+  "require": {
+    "phpstan/phpstan": "^1.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require-dev": {
+    "ergebnis/phpstan-rules": "^1.0"
+  }
+}
