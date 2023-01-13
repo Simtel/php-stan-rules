@@ -8,6 +8,7 @@
     }
   },
   "require-dev": {
-    "ergebnis/phpstan-rules": "^1.0"
+    "ergebnis/phpstan-rules": "^1.0",
+    "phpunit/phpunit": "^9.5"
   }
 }
