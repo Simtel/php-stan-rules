@@ -1,4 +1,7 @@
 {
+  "name": "simtel/php-stan-rules",
+  "description": "Extended phpstan rules",
+  "license": ["MIT"],
   "require": {
     "phpstan/phpstan": "^1.9"
   },
