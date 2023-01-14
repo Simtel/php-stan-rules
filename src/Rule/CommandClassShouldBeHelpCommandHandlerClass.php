@@ -30,6 +30,7 @@ class CommandClassShouldBeHelpCommandHandlerClass implements Rule
     /**
      * @param Class_ $node
      * @param Scope $scope
+     *
      * @return string[]
      */
     public function processNode(Node $node, Scope $scope): array
@@ -45,6 +46,9 @@ class CommandClassShouldBeHelpCommandHandlerClass implements Rule
 
         $find = false;
         $doc = $node->getDocComment()?->getText() ?? '';
+        if ($doc === '') {
+            return ['Command class should be include phpDoc with @see attribute'];
+        }
         $tokens = new TokenIterator($this->phpDocLexer->tokenize($doc));
         $text = $this->parser->parse($tokens);
 

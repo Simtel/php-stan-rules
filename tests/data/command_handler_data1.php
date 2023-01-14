@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Examples;
+namespace data;
 
 /**
  * @see TestClassCommand
