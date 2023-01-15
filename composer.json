@@ -1,5 +1,5 @@
 {
-  "name": "simtel/php-stan-rules",
+  "name": "simtel/phpstan-rules",
   "description": "Extended rules for phpstan",
   "license": ["MIT"],
   "authors": [
