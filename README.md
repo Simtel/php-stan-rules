@@ -13,3 +13,9 @@ To use this extension, require it in [Composer](https://getcomposer.org/):
 composer require --dev simtel/phpstan-rules
 ```
 
+Add rule to configiration:
+
+```
+rules:
+    - Simtel\PHPStanRules\Rule\CommandClassShouldBeHelpCommandHandlerClass
+```
