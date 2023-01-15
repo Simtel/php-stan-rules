@@ -10,6 +10,6 @@
 To use this extension, require it in [Composer](https://getcomposer.org/):
 
 ```
-composer require --dev phpstan/phpstan-strict-rules
+composer require --dev simtel/php-stan-rules
 ```
 
