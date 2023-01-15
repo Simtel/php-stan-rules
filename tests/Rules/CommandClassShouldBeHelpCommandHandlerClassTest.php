@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Rule\CommandClassShouldBeHelpCommandHandlerClass;
+use Simtel\PHPStanRules\Rule\CommandClassShouldBeHelpCommandHandlerClass;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;

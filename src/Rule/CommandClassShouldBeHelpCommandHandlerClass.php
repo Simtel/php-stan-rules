@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Rule;
+namespace Simtel\PHPStanRules\Rule;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
