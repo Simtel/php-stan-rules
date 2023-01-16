@@ -32,7 +32,6 @@ class CommandClassShouldBeHelpCommandHandlerClassTest extends RuleTestCase
                 10
             ]
         ]);
-        self::assertTrue(true);
     }
 
     public function testExistsSeeAttribute(): void
@@ -43,7 +42,6 @@ class CommandClassShouldBeHelpCommandHandlerClassTest extends RuleTestCase
                 10
             ]
         ]);
-        self::assertTrue(true);
     }
 
     public function testExistsPhpDoc(): void
@@ -54,6 +52,10 @@ class CommandClassShouldBeHelpCommandHandlerClassTest extends RuleTestCase
                 7
             ]
         ]);
-        self::assertTrue(true);
+    }
+
+    public function testIfExistInvokeMethod(): void
+    {
+        $this->analyse([__DIR__ . '/../data/command_handler_data4.php'], []);
     }
 }

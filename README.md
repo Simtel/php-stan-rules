@@ -2,7 +2,7 @@
 [![License](https://poser.pugx.org/phpstan/phpstan-strict-rules/license)](https://packagist.org/packages/phpstan/phpstan-strict-rules)
 
 ### Add new rules:
- - If class name include `Command`, php doc attribute `@see` should be include class with `CommandHandler` in name
+ - If class name include `Command`, php doc attribute `@see` should be include class with `CommandHandler` in name (if class include invoke method the rule does not apply)
 
 
 ## Installation

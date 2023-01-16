@@ -44,6 +44,13 @@ class CommandClassShouldBeHelpCommandHandlerClass implements Rule
             return [];
         }
 
+        $methods = $node->getMethods();
+        foreach ($methods as $method) {
+            if ($method->name->name === '__invoke') {
+                return [];
+            }
+        }
+
         $find = false;
         $doc = $node->getDocComment()?->getText() ?? '';
         if ($doc === '') {
