@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+namespace Simtel\PHPStanRules\Tests\Rules;
 
 use Simtel\PHPStanRules\Rule\CommandClassShouldBeHelpCommandHandlerClass;
 use PHPStan\PhpDocParser\Lexer\Lexer;

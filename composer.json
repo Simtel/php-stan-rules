@@ -14,7 +14,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Simtel\\PHPStanRules\\": "src/"
+      "Simtel\\PHPStanRules\\": "src/",
+      "Simtel\\PHPStanRules\\Tests\\": "tests/"
     }
   },
   "require-dev": {
