@@ -3,7 +3,7 @@
 
 ### Add new rules:
  - If class name include `Command`, php doc attribute `@see` should be included class with `CommandHandler` in name (if class include invoke method the rule does not apply)
-
+ - If class name ends EventListener, class should be included attribute AsEventListener  
 
 ## Installation
 
@@ -18,4 +18,5 @@ Add rule to configuration:
 ```
 rules:
     - Simtel\PHPStanRules\Rule\CommandClassShouldBeHelpCommandHandlerClass
+    - Simtel\PHPStanRules\Rule\EventListenerClassShouldBeIncludeAsListenerAttribute
 ```

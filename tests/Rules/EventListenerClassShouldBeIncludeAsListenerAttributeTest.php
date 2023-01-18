@@ -8,7 +8,6 @@ use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Simtel\PHPStanRules\Rule\EventListenerClassShouldBeIncludeAsListenerAttribute;
 
-#[Attribute]
 class EventListenerClassShouldBeIncludeAsListenerAttributeTest extends RuleTestCase
 {
 
@@ -25,14 +24,14 @@ class EventListenerClassShouldBeIncludeAsListenerAttributeTest extends RuleTestC
         $this->analyse([__DIR__ . '/../Fixture/EventListener/TestClassEventListener.php'], []);
     }
 
-    /*public function testExistsAttribute(): void
+    public function testExistsAttribute(): void
     {
-        $this->analyse([__DIR__ . '/../data/event_listener/data2.php'], [
+        $this->analyse([__DIR__ . '/../Fixture/EventListener/TestNotCorrectClassEventListener.php'], [
             [
                 'Event listener class should be include attribute #[AsEventListener]',
-                9
+                7
             ]
         ]);
-    }*/
+    }
 
 }

@@ -36,16 +36,25 @@ class EventListenerClassShouldBeIncludeAsListenerAttribute implements Rule
         }
 
         if (!str_ends_with($className, 'EventListener')) {
-            //return [];
+            return [];
         }
 
+        $fullyQualifiedClassName = $node->namespacedName?->toString();
+        if ($fullyQualifiedClassName === null) {
+            return [];
+        }
+        $attributes = $this->reflectionProvider
+            ->getClass($fullyQualifiedClassName)
+            ->getNativeReflection()
+            ->getAttributes();
+
         $find = false;
+        foreach ($attributes as $attribute) {
+            if (str_ends_with($attribute->getName(), 'AsEventListener')) {
+                $find = true;
+            }
+        }
 
-        $fullyQualifiedClassName = $node->namespacedName->toString();
-
-        $classReflection = $this->reflectionProvider->getClass($fullyQualifiedClassName);
-
-        var_dump($classReflection->getNativeReflection()->getAttributes('AsEventListener'));
         if ($find === false) {
             return [
                 'Event listener class should be include attribute #[AsEventListener]',
@@ -54,5 +63,4 @@ class EventListenerClassShouldBeIncludeAsListenerAttribute implements Rule
 
         return [];
     }
-
 }

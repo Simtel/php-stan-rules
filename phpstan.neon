@@ -1,8 +1,7 @@
 rules:
-    - App\Rule\CommandClassShouldBeHelpCommandHandlerClass
+    - Simtel\PHPStanRules\Rule\CommandClassShouldBeHelpCommandHandlerClass
 parameters:
     paths:
         - src\Examples
-    # The level 8 is the highest level
     level: max
 
