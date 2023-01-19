@@ -20,3 +20,9 @@ rules:
     - Simtel\PHPStanRules\Rule\CommandClassShouldBeHelpCommandHandlerClass
     - Simtel\PHPStanRules\Rule\EventListenerClassShouldBeIncludeAsListenerAttribute
 ```
+
+Or add extension to root config:
+```
+includes:
+	- vendor/simtel/phpstan-rules/rules.neon
+```

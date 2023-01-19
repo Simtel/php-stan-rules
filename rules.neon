@@ -1,0 +1,3 @@
+rules:
+    - Simtel\PHPStanRules\Rule\CommandClassShouldBeHelpCommandHandlerClass
+    - Simtel\PHPStanRules\Rule\EventListenerClassShouldBeIncludeAsListenerAttribute
