@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Simtel\PHPStanRules\Tests\Rules;
 
-use PhpParser\Builder\Class_;
-use PhpParser\Node;
-use PHPStan\Analyser\Scope;
+use PHPStan\PhpDocParser\Lexer\Lexer;
+use PHPStan\PhpDocParser\Parser\ConstExprParser;
+use PHPStan\PhpDocParser\Parser\PhpDocParser;
+use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Simtel\PHPStanRules\Rule\NotShouldPhpdocReturnIfExistTypeHint;
@@ -19,14 +20,18 @@ class NotShouldPhpdocReturnIfExistTypeHintTest extends RuleTestCase
      */
     protected function getRule(): Rule
     {
-        return new NotShouldPhpdocReturnIfExistTypeHint();
+        return new NotShouldPhpdocReturnIfExistTypeHint(
+            $this->createReflectionProvider(),
+            new PhpDocParser(new TypeParser(), new ConstExprParser()),
+            new Lexer()
+        );
     }
 
     public function testWithError(): void
     {
         $this->analyse([__DIR__ . '/../Fixture/Return/MethodsWithTypeHintAndReturn.php'], [
             [
-                'Event listener class should be include attribute #[AsEventListener]',
+                'PhpDoc attribute @return can be remove',
                 7
             ]
         ]);
