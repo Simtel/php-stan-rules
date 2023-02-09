@@ -10,7 +10,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 
-class EventListenerClassShouldBeIncludeAsListenerAttribute implements Rule
+final class EventListenerClassShouldBeIncludeAsListenerAttribute implements Rule
 {
 
     public function __construct(private readonly ReflectionProvider $reflectionProvider)

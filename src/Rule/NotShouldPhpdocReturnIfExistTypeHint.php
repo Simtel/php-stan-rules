@@ -13,7 +13,7 @@ use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 
-class NotShouldPhpdocReturnIfExistTypeHint implements Rule
+final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
 {
 
     public function __construct(

@@ -13,7 +13,7 @@ use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\Rules\Rule;
 
-class CommandClassShouldBeHelpCommandHandlerClass implements Rule
+final class CommandClassShouldBeHelpCommandHandlerClass implements Rule
 {
 
     public function __construct(
