@@ -46,9 +46,22 @@ final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
         $methods = $reflection->getMethods();
 
         foreach ($methods as $method) {
-            $returnType = $method->getReturnType()?->getName();
-            $doc = (string)$method->getDocComment();
+            if (str_starts_with($method->getName(), '__')) {
+                continue;
+            }
 
+            $doc = (string)$method->getDocComment();
+            if ($doc === '') {
+                continue;
+            }
+
+
+            $returnType = $method->getReturnType();
+            if ($returnType === null || !method_exists($returnType, 'getName')) {
+                return [];
+            }
+
+            $returnTypeName = $returnType->getName();
             $tokens = new TokenIterator($this->phpDocLexer->tokenize($doc));
             $text = $this->parser->parse($tokens);
             foreach ($text->getTags() as $tag) {
@@ -57,8 +70,9 @@ final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
                 }
                 if ($tag->value instanceof ReturnTagValueNode) {
                     $value = $tag->value->type->name;
-                    if ($value === $returnType) {
-                        return ['PhpDoc attribute @return can be remove'];
+                    if ($value == $returnTypeName
+                        && $reflection->getName() === $method->getBetterReflection()->getLocatedSource()->getName()) {
+                        return ['PhpDoc attribute @return for method ' . $method->getName() . ' can be remove'];
                     }
                 }
             }
