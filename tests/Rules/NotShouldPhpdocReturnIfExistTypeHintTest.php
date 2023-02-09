@@ -31,7 +31,7 @@ class NotShouldPhpdocReturnIfExistTypeHintTest extends RuleTestCase
     {
         $this->analyse([__DIR__ . '/../Fixture/Return/MethodsWithTypeHintAndReturn.php'], [
             [
-                'PhpDoc attribute @return can be remove',
+                'PhpDoc attribute @return for method someMethod can be remove',
                 7
             ]
         ]);
