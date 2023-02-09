@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Simtel\PHPStanRules\Rule;
 
 use PhpParser\Node;
+use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
@@ -13,6 +14,9 @@ use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 
+/**
+ * @implements Rule<Class_>
+ */
 final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
 {
 
@@ -25,7 +29,7 @@ final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
 
     public function getNodeType(): string
     {
-        return Node\Stmt\Class_::class;
+        return Class_::class;
     }
 
     public function processNode(Node $node, Scope $scope): array
@@ -53,9 +57,9 @@ final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
                 }
                 if ($tag->value instanceof ReturnTagValueNode) {
                     $value = $tag->value->type->name;
-                }
-                if ($value === $returnType) {
-                    return ['PhpDoc attribute @return can be remove'];
+                    if ($value === $returnType) {
+                        return ['PhpDoc attribute @return can be remove'];
+                    }
                 }
             }
         }

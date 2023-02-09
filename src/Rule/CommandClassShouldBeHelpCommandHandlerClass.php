@@ -13,6 +13,9 @@ use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\Rules\Rule;
 
+/**
+ * @implements Rule<Class_>
+ */
 final class CommandClassShouldBeHelpCommandHandlerClass implements Rule
 {
 
