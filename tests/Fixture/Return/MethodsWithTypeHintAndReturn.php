@@ -13,4 +13,12 @@ class MethodsWithTypeHintAndReturn
     {
         return true;
     }
+
+    /**
+     * @return int
+     */
+    private function getInt(): int
+    {
+        return 0;
+    }
 }

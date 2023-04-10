@@ -18,7 +18,7 @@ class NotShouldPhpdocReturnIfExistTypeHintTest extends RuleTestCase
     /**
      * @inheritDoc
      */
-    protected function getRule(): Rule
+    public function getRule(): Rule
     {
         return new NotShouldPhpdocReturnIfExistTypeHint(
             $this->createReflectionProvider(),
@@ -33,7 +33,11 @@ class NotShouldPhpdocReturnIfExistTypeHintTest extends RuleTestCase
             [
                 'PhpDoc attribute @return for method someMethod can be remove',
                 7
-            ]
+            ],
+            [
+                'PhpDoc attribute @return for method getInt can be remove',
+                7
+            ],
         ]);
     }
 }
