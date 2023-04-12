@@ -13,6 +13,7 @@ use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
+use PHPStan\ShouldNotHappenException;
 
 /**
  * @implements Rule<Class_>
@@ -32,6 +33,9 @@ final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
         return Class_::class;
     }
 
+    /**
+     * @throws ShouldNotHappenException
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         $fullyQualifiedClassName = $node->namespacedName?->toString();
@@ -71,13 +75,14 @@ final class NotShouldPhpdocReturnIfExistTypeHint implements Rule
                 }
                 if ($tag->value instanceof ReturnTagValueNode) {
                     $value = $tag->value->type->name;
-                    if ($value == $returnTypeName
+                    if ($value === $returnTypeName
                         && $reflection->getName() === $method->getBetterReflection()->getLocatedSource()->getName()) {
-                        $errors[] ='PhpDoc attribute @return for method ' . $method->getName() . ' can be remove';
+                        $errors[] = \PHPStan\Rules\RuleErrorBuilder::message(
+                            'PhpDoc attribute @return for method ' . $method->getName() . ' can be remove'
+                        )->line((int)$method->getStartLine())->build();
                     }
                 }
             }
-
         }
         return $errors;
     }
